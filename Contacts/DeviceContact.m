@@ -12,21 +12,8 @@
 @interface DeviceContact()
 
 @property (nonatomic, readwrite) NSString * name;
-@property (nonatomic, readwrite) NSString * job;
-@property (nonatomic, readwrite) UIImage * image;
 @property (nonatomic, readwrite) NSArray<NSString *> * phoneNumbers;
 @property (nonatomic, readwrite) NSArray<NSString *>  * emailAddresses;
-@property (nonatomic, readwrite) NSArray<NSString *> * postalAddresses;
-@property (nonatomic, readwrite) NSArray<NSString *> * socialProfiles;
-@property (nonatomic, readwrite) NSDate * birthday;
-@property (nonatomic, readwrite) NSArray * websites;
-@property (nonatomic, readwrite) NSString * notes;
-@property (nonatomic, readwrite) NSArray * relatedPersons;
-@property (nonatomic, readwrite) NSArray * linkedRecordIDs;
-@property (nonatomic, readwrite) NSDictionary * source;
-@property (nonatomic, readwrite) NSArray * dates;
-@property (nonatomic, readwrite) NSDictionary * recordDate;
-@property (nonatomic, readwrite) NSDictionary * defaults;
 
 @end
 

@@ -14,7 +14,7 @@
 
 @interface CNDeviceContactsInteractor : NSObject
 
-+ (void) loadContactsWithContactStore:(CNContactStore *) contactStore  contacts: (void(^)(NSArray<DeviceContact *> *)) contacts error:(void(^)(UIAlertController *)) errorAlert;
++ (void) loadContactsWithContactStore:(CNContactStore *) contactStore contacts: (void(^)(NSArray<DeviceContact *> *)) contacts error:(void(^)(UIAlertController *)) errorAlert;
 + (void) loadContactsWithAddressBook:(ABAddressBookRef) addressBook contacts:(void(^)(NSArray<DeviceContact *> *)) contacts error:(void(^)(UIAlertController *)) errorAlert;
 
 @end
