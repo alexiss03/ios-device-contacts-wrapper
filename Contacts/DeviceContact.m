@@ -17,7 +17,6 @@
 
 @end
 
-
 @implementation DeviceContact
 
 - (instancetype) initWithCNContact: (CNContact *) cNContact

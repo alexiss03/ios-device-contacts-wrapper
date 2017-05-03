@@ -8,12 +8,15 @@
 
 #import "CNDeviceContactsInteractor.h"
 #import "CNContactPermissionHelper.h"
+#import "CNContactConstants.h"
 
-#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+@interface CNDeviceContactsInteractor()<CNDeviceContactsInteractorProtocol>
+
+@end
 
 @implementation CNDeviceContactsInteractor
 
-+ (void) addNewContact
++ (void) addNDemoNewContact
 {
     if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) {
         [self addNewContactiOS9Above];
@@ -63,30 +66,51 @@
 
 }
 
-+ (void) loadContactsWithContactStore:(CNContactStore *) contactStore contacts: (void(^)(NSArray<DeviceContact *> *)) contacts error:(void(^)(UIAlertController *)) error
++ (void)loadContacts: (void (^)(NSArray<DeviceContact *> *))contacts error:(void (^)(NSError *))error
 {
-    [CNContactPermissionHelper requestContactPermissionCompletionHandler:^(BOOL authorized, UIAlertController * errorAlert) {
+    if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) {
+        CNContactStore * contactStore = [[CNContactStore alloc] init];
+        [CNDeviceContactsInteractor loadContactsWithContactStore:contactStore contacts:^(NSArray<DeviceContact *> * contacts) {
+            NSLog(@"contacts:%@",contacts);
+        } error:^(NSError * nserror) {
+            error(nserror);
+        }];
+    } else if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+        ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
+        [CNDeviceContactsInteractor loadContactsWithAddressBook:addressBook contacts:^(NSArray<DeviceContact *> * contacts) {
+            NSLog(@"contacts:%@",contacts);
+        } error:^(NSError * nserror) {
+            error(nserror);
+        }];
+    }
+}
+
++ (void) loadContactsWithContactStore:(CNContactStore *) contactStore contacts: (void(^)(NSArray<DeviceContact *> *)) contacts error:(void(^)(NSError *)) error
+{
+    [CNContactPermissionHelper requestContactPermissionCompletionHandler:^(BOOL authorized, NSError * nserror) {
         if(authorized) {
             [self getContactsIOS9Above:contactStore contacts:contacts];
         } else {
-            error(errorAlert);
+            error(nserror);
         }
     }];
     
 }
 
-+ (void) loadContactsWithAddressBook:(ABAddressBookRef) addressBook contacts:(void(^)(NSArray<DeviceContact *> *)) contacts error:(void(^)(UIAlertController *)) error
++ (void) loadContactsWithAddressBook:(ABAddressBookRef) addressBook contacts:(void(^)(NSArray<DeviceContact *> *)) contacts error:(void(^)(NSError *)) error
 {
-    [CNContactPermissionHelper requestContactPermissionCompletionHandler:^(BOOL authorized, UIAlertController * errorAlert) {
+    [CNContactPermissionHelper requestContactPermissionCompletionHandler:^(BOOL authorized, NSError * nserror) {
         if(authorized) {
             [self getContactsIOS8:addressBook contacts: contacts];
         } else {
-            error(errorAlert);
+            error(nserror);
         }
     }];
 }
 
-+ (void) getContactsIOS8: (ABAddressBookRef) addressBook contacts:(void(^)(NSArray<DeviceContact *> *)) contacts {
+
++ (void) getContactsIOS8: (ABAddressBookRef) addressBook contacts:(void(^)(NSArray<DeviceContact *> *)) contacts
+{
     NSMutableArray * contactList = [[NSMutableArray alloc] init];
     CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
     CFIndex nPeople = ABAddressBookGetPersonCount(addressBook);

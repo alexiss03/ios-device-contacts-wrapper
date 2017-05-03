@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "CNContactNotificationListener.h"
+#import "CNNotificationListener.h"
 #import <Contacts/Contacts.h>
 
 @interface AppDelegate ()

@@ -10,41 +10,41 @@
 
 #import "ViewController.h"
 #import "CNDeviceContactsInteractor.h"
-#import "CNContactNotificationListener.h"
+#import "CNContactErrorAlertGenerator.h"
 
-@interface ViewController() <CNContactNotificationListenerDelegate>
+#import "CNNotificationListener.h"
+
+@interface ViewController()<CNNotificationListenerDelegate>
 
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 }
 
-- (void) viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
-    CNContactStore * contactStore = [[CNContactStore alloc] init];
-    //ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
+
+    CNNotificationListener * listener = [[CNNotificationListener alloc] initWithDelegate:self];
+    [listener startListening];
+    [CNDeviceContactsInteractor addNDemoNewContact];
     
-    //CNContactNotificationListener * listener = [[CNContactNotificationListener alloc] initWitAddressBook:addressBook delegate:self];
-    //CNContactNotificationListener * listener = [[CNContactNotificationListener alloc] initWithContactStore:contactStore delegate: self];
-    //[listener startListening];
+    [listener stopListening];
     
-    [CNDeviceContactsInteractor loadContactsWithContactStore:contactStore contacts:^(NSArray<DeviceContact *> * contacts) {
-        NSLog(@"contacts:%@",contacts);
-    } error:^(UIAlertController * errorAlert) {
-        [self presentViewController:errorAlert animated:YES completion:nil];
+    [CNDeviceContactsInteractor loadContacts:^(NSArray<DeviceContact *> * contacts) {
+        NSLog(@"Contacts: %@", contacts);
+    } error:^(NSError * error) {
+        NSLog(@"Error: %@", error);
+        UIAlertController * errorAlert = [CNContactErrorAlertGenerator generateAlertFromError:error];
+        if(errorAlert) {
+            [self presentViewController:errorAlert animated:true completion:nil];
+        }
     }];
-    
-//    [CNDeviceContactsInteractor loadContactsWithAddressBook:addressBook contacts:^(NSArray<DeviceContact *> * contacts) {
-//        NSLog(@"contacts:%@",contacts);
-//    } error:^(UIAlertController * errorAlert) {
-//        [self presentViewController:errorAlert animated:YES completion:nil];
-//    }];
-
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -54,7 +54,7 @@
 
 - (void) contactsDidChange:(NSArray<DeviceContact *> *) contacts
 {
-     NSLog(@"Contacts:%@",contacts);
+     NSLog(@"Reloaded contacts:%@",contacts);
 }
 
 @end

@@ -10,6 +10,6 @@
 
 @interface CNContactPermissionHelper : NSObject
 
-+ (void) requestContactPermissionCompletionHandler:(void(^)(BOOL authorized, UIAlertController * error)) completionHandler;
++ (void) requestContactPermissionCompletionHandler:(void(^)(BOOL authorized, NSError * error)) completionHandler;
 
 @end

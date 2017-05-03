@@ -18,10 +18,12 @@
 		0062F1741EA82C53004BE817 /* CNDeviceContactsInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0062F1731EA82C53004BE817 /* CNDeviceContactsInteractor.m */; };
 		0062F1771EA82C7E004BE817 /* DeviceContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 0062F1761EA82C7E004BE817 /* DeviceContact.m */; };
 		0062F17B1EA89191004BE817 /* CNContactFormatHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0062F17A1EA89191004BE817 /* CNContactFormatHelper.m */; };
-		0062F17F1EA89480004BE817 /* CNContactNotificationListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 0062F17E1EA89480004BE817 /* CNContactNotificationListener.m */; };
+		0062F17F1EA89480004BE817 /* CNNotificationListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 0062F17E1EA89480004BE817 /* CNNotificationListener.m */; };
 		007421C11EAD75C000304DC4 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007421C01EAD75C000304DC4 /* Contacts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		007421C31EAD75C600304DC4 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007421C21EAD75C500304DC4 /* AddressBook.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		007421C81EADC9AB00304DC4 /* CNContactPermissionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 007421C71EADC9AB00304DC4 /* CNContactPermissionHelper.m */; };
+		00C20CC31EB9705700A200B8 /* CNContactErrorAlertGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C20CC21EB9705700A200B8 /* CNContactErrorAlertGenerator.m */; };
+		00C20CC61EB970B100A200B8 /* CNContactConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C20CC51EB970B100A200B8 /* CNContactConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,13 +66,17 @@
 		0062F1761EA82C7E004BE817 /* DeviceContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceContact.m; sourceTree = "<group>"; };
 		0062F1791EA89191004BE817 /* CNContactFormatHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNContactFormatHelper.h; sourceTree = "<group>"; };
 		0062F17A1EA89191004BE817 /* CNContactFormatHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNContactFormatHelper.m; sourceTree = "<group>"; };
-		0062F17D1EA89480004BE817 /* CNContactNotificationListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNContactNotificationListener.h; sourceTree = "<group>"; };
-		0062F17E1EA89480004BE817 /* CNContactNotificationListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNContactNotificationListener.m; sourceTree = "<group>"; };
+		0062F17D1EA89480004BE817 /* CNNotificationListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNNotificationListener.h; sourceTree = "<group>"; };
+		0062F17E1EA89480004BE817 /* CNNotificationListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNNotificationListener.m; sourceTree = "<group>"; };
 		007421C01EAD75C000304DC4 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		007421C21EAD75C500304DC4 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
-		007421C51EADBA6900304DC4 /* CNContactNotificationListenerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNContactNotificationListenerDelegate.h; sourceTree = "<group>"; };
+		007421C51EADBA6900304DC4 /* CNNotificationListenerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNNotificationListenerDelegate.h; sourceTree = "<group>"; };
 		007421C61EADC9AB00304DC4 /* CNContactPermissionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNContactPermissionHelper.h; sourceTree = "<group>"; };
 		007421C71EADC9AB00304DC4 /* CNContactPermissionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNContactPermissionHelper.m; sourceTree = "<group>"; };
+		00C20CC11EB9705700A200B8 /* CNContactErrorAlertGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNContactErrorAlertGenerator.h; sourceTree = "<group>"; };
+		00C20CC21EB9705700A200B8 /* CNContactErrorAlertGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNContactErrorAlertGenerator.m; sourceTree = "<group>"; };
+		00C20CC41EB970B100A200B8 /* CNContactConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNContactConstants.h; sourceTree = "<group>"; };
+		00C20CC51EB970B100A200B8 /* CNContactConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNContactConstants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,11 +178,15 @@
 				0062F17A1EA89191004BE817 /* CNContactFormatHelper.m */,
 				0062F1721EA82C53004BE817 /* CNDeviceContactsInteractor.h */,
 				0062F1731EA82C53004BE817 /* CNDeviceContactsInteractor.m */,
-				0062F17D1EA89480004BE817 /* CNContactNotificationListener.h */,
-				0062F17E1EA89480004BE817 /* CNContactNotificationListener.m */,
+				0062F17D1EA89480004BE817 /* CNNotificationListener.h */,
+				0062F17E1EA89480004BE817 /* CNNotificationListener.m */,
 				007421C61EADC9AB00304DC4 /* CNContactPermissionHelper.h */,
 				007421C71EADC9AB00304DC4 /* CNContactPermissionHelper.m */,
-				007421C51EADBA6900304DC4 /* CNContactNotificationListenerDelegate.h */,
+				00C20CC11EB9705700A200B8 /* CNContactErrorAlertGenerator.h */,
+				00C20CC21EB9705700A200B8 /* CNContactErrorAlertGenerator.m */,
+				007421C51EADBA6900304DC4 /* CNNotificationListenerDelegate.h */,
+				00C20CC41EB970B100A200B8 /* CNContactConstants.h */,
+				00C20CC51EB970B100A200B8 /* CNContactConstants.m */,
 			);
 			name = Contacts;
 			sourceTree = "<group>";
@@ -344,10 +354,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0062F1471EA82C38004BE817 /* ViewController.m in Sources */,
-				0062F17F1EA89480004BE817 /* CNContactNotificationListener.m in Sources */,
+				00C20CC61EB970B100A200B8 /* CNContactConstants.m in Sources */,
+				0062F17F1EA89480004BE817 /* CNNotificationListener.m in Sources */,
 				0062F1771EA82C7E004BE817 /* DeviceContact.m in Sources */,
 				0062F17B1EA89191004BE817 /* CNContactFormatHelper.m in Sources */,
 				007421C81EADC9AB00304DC4 /* CNContactPermissionHelper.m in Sources */,
+				00C20CC31EB9705700A200B8 /* CNContactErrorAlertGenerator.m in Sources */,
 				0062F1741EA82C53004BE817 /* CNDeviceContactsInteractor.m in Sources */,
 				0062F1441EA82C38004BE817 /* AppDelegate.m in Sources */,
 				0062F1411EA82C38004BE817 /* main.m in Sources */,

@@ -6,7 +6,7 @@
 //  Copyright © 2017 Mary Alexis Solis. All rights reserved.
 //
 
-@protocol CNContactNotificationListenerDelegate <NSObject>
+@protocol CNNotificationListenerDelegate <NSObject>
 
 - (void) contactsDidChange:(NSArray<DeviceContact *> *) contacts;
 
