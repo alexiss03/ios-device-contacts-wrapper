@@ -8,10 +8,14 @@
 #import <Contacts/CNContact.h>
 #import "DeviceContact.h"
 #import "CNContactFormatHelper.h"
+#import "CNContactConstants.h"
 
 @interface DeviceContact()
 
 @property (nonatomic, readwrite) NSString * name;
+@property (nonatomic, readwrite) NSString * identifier;
+@property (nonatomic, readwrite) NSString * iOS9AboveIdentifier;
+@property (nonatomic, readwrite) NSString * iOS8Identifier;
 @property (nonatomic, readwrite) NSArray<NSString *> * phoneNumbers;
 @property (nonatomic, readwrite) NSArray<NSString *>  * emailAddresses;
 
@@ -25,6 +29,7 @@
     
     if(self) {
         _name = [NSString stringWithFormat:@"%@ %@", cNContact.givenName, cNContact.familyName];
+        _iOS9AboveIdentifier = cNContact.identifier;
         
         Class formatHelper = [CNContactFormatHelper class];
         _phoneNumbers = [formatHelper stringArrayFromCNLabeledValueArray:cNContact.phoneNumbers];
@@ -34,12 +39,13 @@
     return self;
 }
 
-- (instancetype) initWithWithFullName:(NSString *) fullName phoneNumbers:(NSArray<NSString *> *) phoneNumbers emails:(NSArray<NSString *>*) emails
+- (instancetype) initWithWithFullName:(NSString *) fullName identifier:(NSString *) identifier phoneNumbers:(NSArray<NSString *> *) phoneNumbers emails:(NSArray<NSString *>*) emails
 {
     self = [super init];
 
     if(self) {
         _name = fullName;
+        _iOS8Identifier = identifier;
         _emailAddresses = emails;
         _phoneNumbers = phoneNumbers;
     }
@@ -47,9 +53,20 @@
 }
 
 
+- (NSString *) identifier
+{
+    if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")){
+        return self.iOS9AboveIdentifier;
+    } else if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+        return self.iOS8Identifier;
+    }
+    return nil;
+}
+
+
 - (NSString *) description
 {
-    return [NSString stringWithFormat:@"Name: %@, PhoneNumbers: %@ Email Addresses:%@", self.name, self.phoneNumbers, self.emailAddresses];
+    return [NSString stringWithFormat:@"Name: %@\n Identifier:%@ \nPhoneNumbers: %@ \nEmail Addresses:%@", self.name, self.identifier, self.phoneNumbers, self.emailAddresses];
 }
 
 @end

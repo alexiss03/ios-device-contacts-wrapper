@@ -31,12 +31,13 @@
 
     CNNotificationListener * listener = [[CNNotificationListener alloc] initWithDelegate:self];
     [listener startListening];
+
     [CNDeviceContactsInteractor addNDemoNewContact];
     
     [listener stopListening];
     
     [CNDeviceContactsInteractor loadContacts:^(NSArray<DeviceContact *> * contacts) {
-        NSLog(@"Contacts: %@", contacts);
+        NSLog(@"Contacts after: %@", contacts);
     } error:^(NSError * error) {
         NSLog(@"Error: %@", error);
         UIAlertController * errorAlert = [CNContactErrorAlertGenerator generateAlertFromError:error];
@@ -46,7 +47,8 @@
     }];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
 }
 

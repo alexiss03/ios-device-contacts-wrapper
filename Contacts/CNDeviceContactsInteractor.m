@@ -30,8 +30,8 @@
     CNContactStore * store = [[CNContactStore alloc] init];
     
     CNMutableContact * newContact = [[CNMutableContact alloc] init];
-    [newContact setGivenName:@"Cole"];
-    [newContact setFamilyName:@"Sprouse"];
+    [newContact setGivenName:@"Darth"];
+    [newContact setFamilyName:@"Vader"];
     
     CNLabeledValue * phone = [[CNLabeledValue alloc] initWithLabel:CNLabelHome value:[[CNPhoneNumber alloc] initWithStringValue:@"09191234567"]];
     newContact.phoneNumbers = @[phone];
@@ -48,8 +48,8 @@
 
 + (void) addNewContactiOS8
 {
-    NSString * firstName = @"Cole";
-    NSString * lastName = @"Sprouse";
+    NSString * firstName = @"Anakin";
+    NSString * lastName = @"Skywalker";
     
     ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(NULL, nil);
     ABRecordRef pet = ABPersonCreate();
@@ -116,20 +116,21 @@
     CFIndex nPeople = ABAddressBookGetPersonCount(addressBook);
     
     for (int iterator = 0; iterator < nPeople; iterator++) {
-        ABRecordRef ref = CFArrayGetValueAtIndex(allPeople, iterator);
+        ABRecordRef contact = CFArrayGetValueAtIndex(allPeople, iterator);
 
-        ABMultiValueRef phones =(__bridge ABMultiValueRef)((__bridge NSString*)ABRecordCopyValue(ref, kABPersonPhoneProperty));
+        ABMultiValueRef phones =(__bridge ABMultiValueRef)((__bridge NSString*)ABRecordCopyValue(contact, kABPersonPhoneProperty));
         
         CFStringRef firstName, lastName;
-        firstName = ABRecordCopyValue(ref, kABPersonFirstNameProperty);
-        lastName  = ABRecordCopyValue(ref, kABPersonLastNameProperty);
+        firstName = ABRecordCopyValue(contact, kABPersonFirstNameProperty);
+        lastName  = ABRecordCopyValue(contact, kABPersonLastNameProperty);
         NSString * fullName = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+        
+        NSString * identifier = [NSString stringWithFormat:@"%i", ABRecordGetRecordID(contact)];
 
         NSMutableArray * emails = [[NSMutableArray alloc] init];
-        ABMutableMultiValueRef eMail  = ABRecordCopyValue(ref, kABPersonEmailProperty);
-        
-        for (int iterator = 0; iterator < ABMultiValueGetCount(eMail); iterator++) {
-            [emails addObject:(__bridge NSString *)ABMultiValueCopyValueAtIndex(eMail, iterator)];
+        ABMutableMultiValueRef email  = ABRecordCopyValue(contact, kABPersonEmailProperty);
+        for (int iterator = 0; iterator < ABMultiValueGetCount(email); iterator++) {
+            [emails addObject:(__bridge NSString *)ABMultiValueCopyValueAtIndex(email, iterator)];
         }
         
         NSMutableArray * phoneNumbers = [[NSMutableArray alloc] init];
@@ -140,7 +141,7 @@
             [phoneNumbers addObject:(__bridge NSString*)ABMultiValueCopyValueAtIndex(phones, iterator)];
         }
         
-        [contactList addObject:[[DeviceContact alloc] initWithWithFullName:fullName phoneNumbers:phoneNumbers emails:emails]];
+        [contactList addObject:[[DeviceContact alloc] initWithWithFullName:fullName identifier:identifier phoneNumbers:phoneNumbers emails:emails]];
     }
     
     contacts(contactList);
@@ -151,7 +152,8 @@
 {
     NSArray * keysToFetch = @[[CNContactFormatter descriptorForRequiredKeysForStyle: CNContactFormatterStyleFullName],
                               CNContactEmailAddressesKey,
-                              CNContactPhoneNumbersKey];
+                              CNContactPhoneNumbersKey,
+                              CNContactIdentifierKey];
     NSError * error;
     NSArray * allContainers  = [contactStore containersMatchingPredicate:nil error:&error];
     NSMutableArray * retrievedContacts = [[NSMutableArray alloc] init];

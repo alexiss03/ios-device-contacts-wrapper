@@ -12,10 +12,11 @@
 @interface DeviceContact : NSObject
 
 @property (nonatomic, readonly) NSString * name;
+@property (nonatomic, readonly) NSString * identifier;
 @property (nonatomic, readonly) NSArray<NSString *> * phoneNumbers;
 @property (nonatomic, readonly) NSArray<NSString *>  * emailAddresses;
 
 - (instancetype) initWithCNContact: (CNContact *) cNContact;
-- (instancetype) initWithWithFullName:(NSString *) fullName phoneNumbers:(NSArray<NSString *> *) phoneNumbers emails:(NSArray<NSString *>*) emails;
+- (instancetype) initWithWithFullName:(NSString *) fullName identifier:(NSString *) identifier phoneNumbers:(NSArray<NSString *> *) phoneNumbers emails:(NSArray<NSString *>*) emails;
 
 @end
