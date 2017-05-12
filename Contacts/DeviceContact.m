@@ -73,6 +73,10 @@
 
 - (NSDictionary *) dictionaryValue
 {
+    if(self.emailAddresses.count == 0 && self.mobileNumbers.count == 0) {
+        return nil;
+    }
+    
     NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
     [dictionary setObject:self.name forKey:@"name"];
     
@@ -83,6 +87,8 @@
     if (self.mobileNumbers.count > 0) {
         [dictionary setObject:self.mobileNumbers forKey:@"mobile_number"];
     }
+    
+    
     return dictionary;
 }
 
