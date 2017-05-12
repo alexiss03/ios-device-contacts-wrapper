@@ -12,5 +12,6 @@
 
 + (NSDate *) dateFromDateComponents:(NSDateComponents *) dateComponents;
 + (NSMutableArray<NSString *>*) stringArrayFromCNLabeledValueArray:(NSArray<CNLabeledValue *> *) labeledValueArray;
++ (NSString *) sha256HashFor:(NSString *) plaintext;
 
 @end

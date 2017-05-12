@@ -66,10 +66,16 @@
 }
 
 
+- (NSString *) objectHash
+{
+    return [CNContactFormatHelper sha256HashFor:self.name];
+}
+
 - (NSString *) description
 {
-    return [NSString stringWithFormat:@"Name: %@\n Identifier:%@ \nPhoneNumbers: %@ \nEmail Addresses:%@", self.name, self.identifier, self.mobileNumbers, self.emailAddresses];
+    return [NSString stringWithFormat:@"Name: %@ Identifier:%@ Hash: %@ PhoneNumbers: %@ Email Addresses:%@", self.name, self.identifier, self.objectHash, self.mobileNumbers, self.emailAddresses];
 }
+
 
 - (NSDictionary *) dictionaryValue
 {
@@ -87,7 +93,6 @@
     if (self.mobileNumbers.count > 0) {
         [dictionary setObject:self.mobileNumbers forKey:@"mobile_number"];
     }
-    
     
     return dictionary;
 }
