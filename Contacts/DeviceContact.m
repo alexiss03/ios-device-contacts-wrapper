@@ -6,9 +6,11 @@
 //  Copyright © 2017 Mary Alexis Solis. All rights reserved.
 //
 #import <Contacts/CNContact.h>
+
 #import "DeviceContact.h"
 #import "CNContactFormatHelper.h"
 #import "CNContactConstants.h"
+
 
 @interface DeviceContact()
 
@@ -16,7 +18,7 @@
 @property (nonatomic, readwrite) NSString * identifier;
 @property (nonatomic, readwrite) NSString * iOS9AboveIdentifier;
 @property (nonatomic, readwrite) NSString * iOS8Identifier;
-@property (nonatomic, readwrite) NSArray<NSString *> * phoneNumbers;
+@property (nonatomic, readwrite) NSArray<NSString *> * mobileNumbers;
 @property (nonatomic, readwrite) NSArray<NSString *>  * emailAddresses;
 
 @end
@@ -32,7 +34,7 @@
         _iOS9AboveIdentifier = cNContact.identifier;
         
         Class formatHelper = [CNContactFormatHelper class];
-        _phoneNumbers = [formatHelper stringArrayFromCNLabeledValueArray:cNContact.phoneNumbers];
+        _mobileNumbers = [formatHelper stringArrayFromCNLabeledValueArray:cNContact.phoneNumbers];
         _emailAddresses = [formatHelper stringArrayFromCNLabeledValueArray:cNContact.emailAddresses];
 
     }
@@ -47,7 +49,7 @@
         _name = fullName;
         _iOS8Identifier = identifier;
         _emailAddresses = emails;
-        _phoneNumbers = phoneNumbers;
+        _mobileNumbers = phoneNumbers;
     }
     return self;
 }
@@ -66,7 +68,22 @@
 
 - (NSString *) description
 {
-    return [NSString stringWithFormat:@"Name: %@\n Identifier:%@ \nPhoneNumbers: %@ \nEmail Addresses:%@", self.name, self.identifier, self.phoneNumbers, self.emailAddresses];
+    return [NSString stringWithFormat:@"Name: %@\n Identifier:%@ \nPhoneNumbers: %@ \nEmail Addresses:%@", self.name, self.identifier, self.mobileNumbers, self.emailAddresses];
+}
+
+- (NSDictionary *) dictionaryValue
+{
+    NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
+    [dictionary setObject:self.name forKey:@"name"];
+    
+    if (self.emailAddresses.count > 0) {
+        [dictionary setObject:self.emailAddresses forKey:@"email_address"];
+    }
+    
+    if (self.mobileNumbers.count > 0) {
+        [dictionary setObject:self.mobileNumbers forKey:@"mobile_number"];
+    }
+    return dictionary;
 }
 
 @end

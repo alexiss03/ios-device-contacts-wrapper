@@ -37,7 +37,9 @@
     [listener stopListening];
     
     [CNDeviceContactsInteractor loadContacts:^(NSArray<DeviceContact *> * contacts) {
-        NSLog(@"Contacts after: %@", contacts);
+        for(DeviceContact * contact in contacts) {
+            NSLog(@"Contact dictionary: %@", [contact dictionaryValue]);
+        }
     } error:^(NSError * error) {
         NSLog(@"Error: %@", error);
         UIAlertController * errorAlert = [CNContactErrorAlertGenerator generateAlertFromError:error];

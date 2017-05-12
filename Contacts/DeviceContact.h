@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <Mantle/Mantle.h>
 
-@interface DeviceContact : NSObject
+@interface DeviceContact : MTLModel
 
 @property (nonatomic, readonly) NSString * name;
 @property (nonatomic, readonly) NSString * identifier;
-@property (nonatomic, readonly) NSArray<NSString *> * phoneNumbers;
+@property (nonatomic, readonly) NSArray<NSString *> * mobileNumbers;
 @property (nonatomic, readonly) NSArray<NSString *>  * emailAddresses;
 
 - (instancetype) initWithCNContact: (CNContact *) cNContact;

@@ -70,15 +70,17 @@
 {
     if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) {
         CNContactStore * contactStore = [[CNContactStore alloc] init];
-        [CNDeviceContactsInteractor loadContactsWithContactStore:contactStore contacts:^(NSArray<DeviceContact *> * contacts) {
-            NSLog(@"contacts:%@",contacts);
+        [CNDeviceContactsInteractor loadContactsWithContactStore:contactStore contacts:^(NSArray<DeviceContact *> * deviceContacts) {
+            //NSLog(@"contacts:%@",contacts);
+            contacts(deviceContacts);
         } error:^(NSError * nserror) {
             error(nserror);
         }];
     } else if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
         ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
-        [CNDeviceContactsInteractor loadContactsWithAddressBook:addressBook contacts:^(NSArray<DeviceContact *> * contacts) {
-            NSLog(@"contacts:%@",contacts);
+        [CNDeviceContactsInteractor loadContactsWithAddressBook:addressBook contacts:^(NSArray<DeviceContact *> * deviceContacts) {
+            //NSLog(@"contacts:%@",contacts);
+            contacts(deviceContacts);
         } error:^(NSError * nserror) {
             error(nserror);
         }];
