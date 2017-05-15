@@ -7,14 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DeviceContact.h"
 
 @interface CNContactConstants : NSObject
 
-#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
-
 enum CNContactError {
-    CNContactPermissionDeniedError = 1000
+    CNContactPermissionDeniedError = 1000,
+    CNContactPermissionRestrictedError = 2000,
+    CNContactLoadingError = 3000
 };
 
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
+#define CONTACTS_DOMAIN_ERROR @"contacts.loading" 
 
 @end

@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>INSOperationsKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Mantle.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,12 +37,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8A9A6470F0A3651A8C360C395ED3C786</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8E2F85A9EA167EFA71B3DCB5DF170059</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DFF19F375AA1F8C3208026513E43ECAC</key>
+		<key>DCE90C73089DD88AA11EAAB0C3FBCFEF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000140381EC58B490006D880 /* CNContactsPermissionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 000140371EC58B490006D880 /* CNContactsPermissionOperation.m */; };
+		0001403B1EC590E00006D880 /* CNContactsImportOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0001403A1EC590E00006D880 /* CNContactsImportOperation.m */; };
+		0001403E1EC5962C0006D880 /* CNDeviceContactsOperationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 0001403D1EC5962C0006D880 /* CNDeviceContactsOperationProvider.m */; };
 		0062F1411EA82C38004BE817 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0062F1401EA82C38004BE817 /* main.m */; };
 		0062F1441EA82C38004BE817 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0062F1431EA82C38004BE817 /* AppDelegate.m */; };
 		0062F1471EA82C38004BE817 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0062F1461EA82C38004BE817 /* ViewController.m */; };
@@ -22,8 +25,10 @@
 		007421C11EAD75C000304DC4 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007421C01EAD75C000304DC4 /* Contacts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		007421C31EAD75C600304DC4 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007421C21EAD75C500304DC4 /* AddressBook.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		007421C81EADC9AB00304DC4 /* CNContactPermissionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 007421C71EADC9AB00304DC4 /* CNContactPermissionHelper.m */; };
+		008674491EC93415008C6295 /* CNContactsAlertOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 008674481EC93415008C6295 /* CNContactsAlertOperation.m */; };
+		0086745D1EC96E0C008C6295 /* CNContactConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0086745C1EC96E0C008C6295 /* CNContactConstants.m */; };
+		008674771EC97A33008C6295 /* CNContactOperationError.m in Sources */ = {isa = PBXBuildFile; fileRef = 008674751EC97A33008C6295 /* CNContactOperationError.m */; };
 		00C20CC31EB9705700A200B8 /* CNContactErrorAlertGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C20CC21EB9705700A200B8 /* CNContactErrorAlertGenerator.m */; };
-		00C20CC61EB970B100A200B8 /* CNContactConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C20CC51EB970B100A200B8 /* CNContactConstants.m */; };
 		159860044CE382FBAA7CE97F /* libPods-ContactsUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C712A982EBA835AE7FA4C7D1 /* libPods-ContactsUITests.a */; };
 		37B5D70DDEA0117A5E003DF5 /* libPods-ContactsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE3EA97308B2582DE32FEDC /* libPods-ContactsTests.a */; };
 		F7817843CE378B44B1AD5EA4 /* libPods-Contacts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F0DACE6B2C9793C4FF7272B /* libPods-Contacts.a */; };
@@ -47,6 +52,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		000140361EC58B490006D880 /* CNContactsPermissionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNContactsPermissionOperation.h; sourceTree = "<group>"; };
+		000140371EC58B490006D880 /* CNContactsPermissionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNContactsPermissionOperation.m; sourceTree = "<group>"; };
+		000140391EC590E00006D880 /* CNContactsImportOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNContactsImportOperation.h; sourceTree = "<group>"; };
+		0001403A1EC590E00006D880 /* CNContactsImportOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNContactsImportOperation.m; sourceTree = "<group>"; };
+		0001403C1EC5962C0006D880 /* CNDeviceContactsOperationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNDeviceContactsOperationProvider.h; sourceTree = "<group>"; };
+		0001403D1EC5962C0006D880 /* CNDeviceContactsOperationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNDeviceContactsOperationProvider.m; sourceTree = "<group>"; };
 		0062F13C1EA82C38004BE817 /* Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Contacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0062F1401EA82C38004BE817 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0062F1421EA82C38004BE817 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -76,10 +87,15 @@
 		007421C51EADBA6900304DC4 /* CNNotificationListenerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNNotificationListenerDelegate.h; sourceTree = "<group>"; };
 		007421C61EADC9AB00304DC4 /* CNContactPermissionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNContactPermissionHelper.h; sourceTree = "<group>"; };
 		007421C71EADC9AB00304DC4 /* CNContactPermissionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNContactPermissionHelper.m; sourceTree = "<group>"; };
+		008674471EC93415008C6295 /* CNContactsAlertOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNContactsAlertOperation.h; sourceTree = "<group>"; };
+		008674481EC93415008C6295 /* CNContactsAlertOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNContactsAlertOperation.m; sourceTree = "<group>"; };
+		0086745B1EC96E0C008C6295 /* CNContactConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNContactConstants.h; sourceTree = "<group>"; };
+		0086745C1EC96E0C008C6295 /* CNContactConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNContactConstants.m; sourceTree = "<group>"; };
+		008674741EC97A33008C6295 /* CNContactOperationError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNContactOperationError.h; sourceTree = "<group>"; };
+		008674751EC97A33008C6295 /* CNContactOperationError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNContactOperationError.m; sourceTree = "<group>"; };
+		008674761EC97A33008C6295 /* CNDeviceContactsOperationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNDeviceContactsOperationProvider.h; sourceTree = "<group>"; };
 		00C20CC11EB9705700A200B8 /* CNContactErrorAlertGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNContactErrorAlertGenerator.h; sourceTree = "<group>"; };
 		00C20CC21EB9705700A200B8 /* CNContactErrorAlertGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNContactErrorAlertGenerator.m; sourceTree = "<group>"; };
-		00C20CC41EB970B100A200B8 /* CNContactConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNContactConstants.h; sourceTree = "<group>"; };
-		00C20CC51EB970B100A200B8 /* CNContactConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNContactConstants.m; sourceTree = "<group>"; };
 		15C80F2E77CB52D8D817FCA3 /* Pods-Contacts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Contacts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Contacts/Pods-Contacts.release.xcconfig"; sourceTree = "<group>"; };
 		1937CA0D9319F8840EF71773 /* Pods-ContactsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ContactsUITests/Pods-ContactsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		35555EC8DCC76F48BB485FE9 /* Pods-ContactsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ContactsUITests/Pods-ContactsUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -121,6 +137,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		000140321EC58AE60006D880 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0062F1791EA89191004BE817 /* CNContactFormatHelper.h */,
+				0062F17A1EA89191004BE817 /* CNContactFormatHelper.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		000140331EC58B090006D880 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				0086745B1EC96E0C008C6295 /* CNContactConstants.h */,
+				0086745C1EC96E0C008C6295 /* CNContactConstants.m */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		000140341EC58B1A0006D880 /* Listeners */ = {
+			isa = PBXGroup;
+			children = (
+				0062F17D1EA89480004BE817 /* CNNotificationListener.h */,
+				0062F17E1EA89480004BE817 /* CNNotificationListener.m */,
+			);
+			name = Listeners;
+			sourceTree = "<group>";
+		};
+		000140351EC58B270006D880 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				000140361EC58B490006D880 /* CNContactsPermissionOperation.h */,
+				000140371EC58B490006D880 /* CNContactsPermissionOperation.m */,
+				000140391EC590E00006D880 /* CNContactsImportOperation.h */,
+				0001403A1EC590E00006D880 /* CNContactsImportOperation.m */,
+				008674471EC93415008C6295 /* CNContactsAlertOperation.h */,
+				008674481EC93415008C6295 /* CNContactsAlertOperation.m */,
+				0001403C1EC5962C0006D880 /* CNDeviceContactsOperationProvider.h */,
+				0001403D1EC5962C0006D880 /* CNDeviceContactsOperationProvider.m */,
+				008674741EC97A33008C6295 /* CNContactOperationError.h */,
+				008674751EC97A33008C6295 /* CNContactOperationError.m */,
+				008674761EC97A33008C6295 /* CNDeviceContactsOperationProvider.h */,
+			);
+			name = Operations;
+			sourceTree = "<group>";
+		};
 		0062F1331EA82C38004BE817 = {
 			isa = PBXGroup;
 			children = (
@@ -190,19 +251,13 @@
 			isa = PBXGroup;
 			children = (
 				007421C41EADB9A400304DC4 /* Contacts */,
-				0062F1791EA89191004BE817 /* CNContactFormatHelper.h */,
-				0062F17A1EA89191004BE817 /* CNContactFormatHelper.m */,
 				0062F1721EA82C53004BE817 /* CNDeviceContactsInteractor.h */,
 				0062F1731EA82C53004BE817 /* CNDeviceContactsInteractor.m */,
-				0062F17D1EA89480004BE817 /* CNNotificationListener.h */,
-				0062F17E1EA89480004BE817 /* CNNotificationListener.m */,
 				007421C61EADC9AB00304DC4 /* CNContactPermissionHelper.h */,
 				007421C71EADC9AB00304DC4 /* CNContactPermissionHelper.m */,
 				00C20CC11EB9705700A200B8 /* CNContactErrorAlertGenerator.h */,
 				00C20CC21EB9705700A200B8 /* CNContactErrorAlertGenerator.m */,
 				007421C51EADBA6900304DC4 /* CNNotificationListenerDelegate.h */,
-				00C20CC41EB970B100A200B8 /* CNContactConstants.h */,
-				00C20CC51EB970B100A200B8 /* CNContactConstants.m */,
 			);
 			name = Contacts;
 			sourceTree = "<group>";
@@ -231,6 +286,10 @@
 		007421C41EADB9A400304DC4 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				000140351EC58B270006D880 /* Operations */,
+				000140341EC58B1A0006D880 /* Listeners */,
+				000140331EC58B090006D880 /* Constants */,
+				000140321EC58AE60006D880 /* Helpers */,
 				0062F17C1EA89340004BE817 /* Model */,
 			);
 			name = Contacts;
@@ -532,16 +591,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				008674491EC93415008C6295 /* CNContactsAlertOperation.m in Sources */,
+				000140381EC58B490006D880 /* CNContactsPermissionOperation.m in Sources */,
+				0001403B1EC590E00006D880 /* CNContactsImportOperation.m in Sources */,
 				0062F1471EA82C38004BE817 /* ViewController.m in Sources */,
-				00C20CC61EB970B100A200B8 /* CNContactConstants.m in Sources */,
 				0062F17F1EA89480004BE817 /* CNNotificationListener.m in Sources */,
 				0062F1771EA82C7E004BE817 /* DeviceContact.m in Sources */,
 				0062F17B1EA89191004BE817 /* CNContactFormatHelper.m in Sources */,
 				007421C81EADC9AB00304DC4 /* CNContactPermissionHelper.m in Sources */,
 				00C20CC31EB9705700A200B8 /* CNContactErrorAlertGenerator.m in Sources */,
 				0062F1741EA82C53004BE817 /* CNDeviceContactsInteractor.m in Sources */,
+				0086745D1EC96E0C008C6295 /* CNContactConstants.m in Sources */,
 				0062F1441EA82C38004BE817 /* AppDelegate.m in Sources */,
 				0062F1411EA82C38004BE817 /* main.m in Sources */,
+				0001403E1EC5962C0006D880 /* CNDeviceContactsOperationProvider.m in Sources */,
+				008674771EC97A33008C6295 /* CNContactOperationError.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

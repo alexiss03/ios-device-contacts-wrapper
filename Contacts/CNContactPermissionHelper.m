@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import <Contacts/Contacts.h>
 #import <AddressBook/AddressBook.h>
+#import <Contacts/Contacts.h>
 
 #import "CNContactPermissionHelper.h"
 #import "CNContactConstants.h"
@@ -81,7 +81,7 @@
 
 + (NSError *) permissionDeniedError
 {
-    NSError * permissionDeniedError = [[NSError alloc] initWithDomain:@"com.contacts.permission" code:CNContactPermissionDeniedError userInfo:nil];
+    NSError * permissionDeniedError = [[NSError alloc] initWithDomain:CONTACTS_DOMAIN_ERROR code:CNContactPermissionDeniedError userInfo:nil];
     return permissionDeniedError;
 }
 

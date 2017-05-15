@@ -10,11 +10,12 @@
 #import <UIKit/UIKit.h>
 #import <Mantle/Mantle.h>
 
-@interface DeviceContact : MTLModel
+#import <Contacts/Contacts.h>
+
+@interface DeviceContact : MTLModel<MTLJSONSerializing>
 
 @property (nonatomic, readonly) NSString * name;
 @property (nonatomic, readonly) NSString * identifier;
-//@property (nonatomic, readonly) NSString * objectHash;
 @property (nonatomic, readonly) NSArray<NSString *> * mobileNumbers;
 @property (nonatomic, readonly) NSArray<NSString *>  * emailAddresses;
 

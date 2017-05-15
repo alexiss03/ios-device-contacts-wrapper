@@ -16,8 +16,6 @@
 
 @property (nonatomic, readwrite) NSString * name;
 @property (nonatomic, readwrite) NSString * identifier;
-@property (nonatomic, readwrite) NSString * iOS9AboveIdentifier;
-@property (nonatomic, readwrite) NSString * iOS8Identifier;
 @property (nonatomic, readwrite) NSArray<NSString *> * mobileNumbers;
 @property (nonatomic, readwrite) NSArray<NSString *>  * emailAddresses;
 
@@ -31,7 +29,7 @@
     
     if(self) {
         _name = [NSString stringWithFormat:@"%@ %@", cNContact.givenName, cNContact.familyName];
-        _iOS9AboveIdentifier = cNContact.identifier;
+        _identifier = cNContact.identifier;
         
         Class formatHelper = [CNContactFormatHelper class];
         _mobileNumbers = [formatHelper stringArrayFromCNLabeledValueArray:cNContact.phoneNumbers];
@@ -47,22 +45,11 @@
 
     if(self) {
         _name = fullName;
-        _iOS8Identifier = identifier;
+        _identifier = identifier;
         _emailAddresses = emails;
         _mobileNumbers = phoneNumbers;
     }
     return self;
-}
-
-
-- (NSString *) identifier
-{
-    if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")){
-        return self.iOS9AboveIdentifier;
-    } else if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-        return self.iOS8Identifier;
-    }
-    return nil;
 }
 
 
@@ -76,25 +63,13 @@
     return [NSString stringWithFormat:@"Name: %@ Identifier:%@ Hash: %@ PhoneNumbers: %@ Email Addresses:%@", self.name, self.identifier, self.objectHash, self.mobileNumbers, self.emailAddresses];
 }
 
-
-- (NSDictionary *) dictionaryValue
+#pragma mark - MTLJSONSerializing Methods
++ (NSDictionary *) JSONKeyPathsByPropertyKey
 {
-    if(self.emailAddresses.count == 0 && self.mobileNumbers.count == 0) {
-        return nil;
-    }
-    
-    NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
-    [dictionary setObject:self.name forKey:@"name"];
-    
-    if (self.emailAddresses.count > 0) {
-        [dictionary setObject:self.emailAddresses forKey:@"email_address"];
-    }
-    
-    if (self.mobileNumbers.count > 0) {
-        [dictionary setObject:self.mobileNumbers forKey:@"mobile_number"];
-    }
-    
-    return dictionary;
+    return @{@"emailAddresses": @"email_address",
+             @"name": @"name",
+             @"identifier": @"device_contact_id",
+             @"mobileNumbers":@"mobile_number"};
 }
 
 @end

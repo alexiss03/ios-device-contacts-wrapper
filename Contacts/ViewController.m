@@ -14,6 +14,10 @@
 
 #import "CNNotificationListener.h"
 
+#import "CNDeviceContactsOperationProvider.h"
+#import "CNContactConstants.h"
+
+
 @interface ViewController()<CNNotificationListenerDelegate>
 
 @end
@@ -28,25 +32,27 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-
-    CNNotificationListener * listener = [[CNNotificationListener alloc] initWithDelegate:self];
-    [listener startListening];
-
-    [CNDeviceContactsInteractor addNDemoNewContact];
     
-    [listener stopListening];
-    
-    [CNDeviceContactsInteractor loadContacts:^(NSArray<DeviceContact *> * contacts) {
-        for(DeviceContact * contact in contacts) {
-            NSLog(@"Contact dictionary: %@", [contact dictionaryValue]);
-        }
-    } error:^(NSError * error) {
-        NSLog(@"Error: %@", error);
-        UIAlertController * errorAlert = [CNContactErrorAlertGenerator generateAlertFromError:error];
-        if(errorAlert) {
-            [self presentViewController:errorAlert animated:true completion:nil];
-        }
-    }];
+    [[CNDeviceContactsOperationProvider allContactsWithPresentationContext:self] runInGlobalQueue];
+
+//    CNNotificationListener * listener = [[CNNotificationListener alloc] initWithDelegate:self];
+//    [listener startListening];
+//
+//    [CNDeviceContactsInteractor addNDemoNewContact];
+//    
+//    [listener stopListening];
+//    
+//    [CNDeviceContactsInteractor loadContacts:^(NSArray<DeviceContact *> * contacts) {
+//        for(DeviceContact * contact in contacts) {
+//            NSLog(@"Contact dictionary: %@", [contact dictionaryValue]);
+//        }
+//    } error:^(NSError * error) {
+//        NSLog(@"Error: %@", error);
+//        UIAlertController * errorAlert = [CNContactErrorAlertGenerator generateAlertFromError:error];
+//        if(errorAlert) {
+//            [self presentViewController:errorAlert animated:true completion:nil];
+//        }
+//    }];
 }
 
 - (void)didReceiveMemoryWarning

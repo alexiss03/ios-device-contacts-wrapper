@@ -23,7 +23,6 @@
 
 @implementation CNNotificationListener
 
-
 - (instancetype) initWithDelegate:(id<CNNotificationListenerDelegate>) delegate
 {
     if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) {

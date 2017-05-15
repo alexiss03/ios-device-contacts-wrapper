@@ -7,6 +7,7 @@ target 'Contacts' do
 
   # Pods for Contacts
   pod 'Mantle'
+  pod 'INSOperationsKit'
 
   target 'ContactsTests' do
     inherit! :search_paths
